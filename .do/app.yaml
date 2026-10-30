@@ -1,11 +1,10 @@
 # DigitalOcean App Platform: the site is plain files (no build), published as a free static site.
-# GITHUB_OWNER is the GitHub account name; it is filled in once the account exists.
 name: albaraah
 region: fra
 static_sites:
   - name: website
     github:
-      repo: GITHUB_OWNER/albaraah-website
+      repo: albaraah-academy/albaraah-website
       branch: main
       deploy_on_push: true
     source_dir: /
