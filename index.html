@@ -115,6 +115,15 @@
               <img class="card-photo" src="assets/grade9-course.jpg" alt="حصة من دورات الشهادة الإعدادية في مدرسة البراءة الخاصة" width="960" height="721" loading="lazy">
             </div>
           </div>
+          <h4 class="gallery-title">من يوميات المدرسة</h4>
+          <div class="gallery">
+            <img src="assets/school-1.jpg" alt="طالبات يحتفلن بإنجاز ورقة عمل في الرياضيات" width="674" height="900" loading="lazy">
+            <img src="assets/school-2.jpg" alt="طلاب الصف في نشاط مشترك داخل القاعة" width="900" height="506" loading="lazy">
+            <img src="assets/school-3.jpg" alt="طالبات في ساحة المدرسة" width="900" height="674" loading="lazy">
+            <img src="assets/school-4.jpg" alt="طلاب يعرضون دفاترهم أمام لوحة المدرسة" width="900" height="618" loading="lazy">
+            <img src="assets/school-5.jpg" alt="طالبات مكرّمات بملصقات التشجيع في حصة التربية الدينية" width="900" height="674" loading="lazy">
+            <img src="assets/school-6.jpg" alt="طلاب يحصلون على أوسمة التميّز على دفاترهم" width="900" height="506" loading="lazy">
+          </div>
         </article>
 
         <article class="unit unit-gold" id="kindergarten">
@@ -215,5 +224,23 @@
       <p>سوريا، حلب، مدينة الباب</p>
     </div>
   </footer>
+  <dialog class="viewer" id="viewer" aria-label="عرض الصورة">
+    <img alt="">
+    <button type="button" class="viewer-close" aria-label="إغلاق">×</button>
+  </dialog>
+  <script>
+    // Photos open full size; a click anywhere or Esc closes them.
+    (function () {
+      var viewer = document.getElementById('viewer'), big = viewer.querySelector('img');
+      document.querySelectorAll('.card-photo, .gallery img').forEach(function (photo) {
+        photo.tabIndex = 0;
+        photo.setAttribute('role', 'button');
+        function open() { big.src = photo.src; big.alt = photo.alt; viewer.showModal(); }
+        photo.addEventListener('click', open);
+        photo.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      });
+      viewer.addEventListener('click', function () { viewer.close(); });
+    })();
+  </script>
 </body>
 </html>

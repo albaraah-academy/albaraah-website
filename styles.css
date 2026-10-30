@@ -122,6 +122,15 @@ svg { width: 1.2em; height: 1.2em; fill: currentColor; flex: none; }
 .card ul { margin: 0; padding-inline-start: 1.2em; color: var(--muted); }
 .card li::marker { color: var(--gold); }
 .card .card-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; margin-top: 16px; }
+.gallery-title { margin: 28px 0 12px; font-size: 1.2rem; font-weight: 900; color: var(--brown-700); }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 12px; }
+.gallery img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; box-shadow: var(--shadow); }
+.card-photo, .gallery img { cursor: zoom-in; transition: transform .2s; }
+.card-photo:hover, .gallery img:hover { transform: scale(1.02); }
+.viewer { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 92vh; overflow: visible; }
+.viewer::backdrop { background: rgba(20, 14, 10, .88); }
+.viewer img { display: block; max-width: 96vw; max-height: 92vh; width: auto; height: auto; border-radius: 12px; cursor: zoom-out; }
+.viewer-close { position: absolute; top: -14px; left: -14px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #fff; color: var(--ink); font-size: 26px; line-height: 1; cursor: pointer; box-shadow: var(--shadow); }
 
 /* One block per unit (school, kindergarten, institute), its colour on the side. */
 .unit { --accent: var(--brown); background: var(--paper); border-radius: var(--radius); border-inline-start: 6px solid var(--accent); padding: 28px; margin-top: 24px; scroll-margin-top: 90px; }
