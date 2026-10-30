@@ -121,6 +121,7 @@ svg { width: 1.2em; height: 1.2em; fill: currentColor; flex: none; }
 .card-gold .tag { color: var(--brown-900); }
 .card ul { margin: 0; padding-inline-start: 1.2em; color: var(--muted); }
 .card li::marker { color: var(--gold); }
+.card .card-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; margin-top: 16px; }
 
 /* One block per unit (school, kindergarten, institute), its colour on the side. */
 .unit { --accent: var(--brown); background: var(--paper); border-radius: var(--radius); border-inline-start: 6px solid var(--accent); padding: 28px; margin-top: 24px; scroll-margin-top: 90px; }
