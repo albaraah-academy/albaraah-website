@@ -116,13 +116,20 @@
             </div>
           </div>
           <h4 class="gallery-title">من يوميات المدرسة</h4>
-          <div class="gallery">
-            <img src="assets/school-1.jpg" alt="طالبات يحتفلن بإنجاز ورقة عمل في الرياضيات" width="674" height="900" loading="lazy">
-            <img src="assets/school-2.jpg" alt="طلاب الصف في نشاط مشترك داخل القاعة" width="900" height="506" loading="lazy">
-            <img src="assets/school-3.jpg" alt="طالبات في ساحة المدرسة" width="900" height="674" loading="lazy">
-            <img src="assets/school-4.jpg" alt="طلاب يعرضون دفاترهم أمام لوحة المدرسة" width="900" height="618" loading="lazy">
-            <img src="assets/school-5.jpg" alt="طالبات مكرّمات بملصقات التشجيع في حصة التربية الدينية" width="900" height="674" loading="lazy">
-            <img src="assets/school-6.jpg" alt="طلاب يحصلون على أوسمة التميّز على دفاترهم" width="900" height="506" loading="lazy">
+          <div class="gallery" data-gallery>
+            <div class="gallery-stage">
+              <img class="gallery-main" src="assets/school-1.jpg" alt="طالبات يحتفلن بإنجاز ورقة عمل في الرياضيات" width="674" height="900" loading="lazy">
+              <button type="button" class="gallery-arrow gallery-prev" aria-label="الصورة السابقة">›</button>
+              <button type="button" class="gallery-arrow gallery-next" aria-label="الصورة التالية">‹</button>
+            </div>
+            <div class="gallery-thumbs">
+              <button type="button" class="is-active"><img src="assets/school-1.jpg" alt="طالبات يحتفلن بإنجاز ورقة عمل في الرياضيات" loading="lazy"></button>
+              <button type="button"><img src="assets/school-2.jpg" alt="طلاب الصف في نشاط مشترك داخل القاعة" loading="lazy"></button>
+              <button type="button"><img src="assets/school-3.jpg" alt="طالبات في ساحة المدرسة" loading="lazy"></button>
+              <button type="button"><img src="assets/school-4.jpg" alt="طلاب يعرضون دفاترهم أمام لوحة المدرسة" loading="lazy"></button>
+              <button type="button"><img src="assets/school-5.jpg" alt="طالبات مكرّمات بملصقات التشجيع في حصة التربية الدينية" loading="lazy"></button>
+              <button type="button"><img src="assets/school-6.jpg" alt="طلاب يحصلون على أوسمة التميّز على دفاترهم" loading="lazy"></button>
+            </div>
           </div>
         </article>
 
@@ -232,7 +239,7 @@
     // Photos open full size; a click anywhere or Esc closes them.
     (function () {
       var viewer = document.getElementById('viewer'), big = viewer.querySelector('img');
-      document.querySelectorAll('.card-photo, .gallery img').forEach(function (photo) {
+      document.querySelectorAll('.card-photo, .gallery-main').forEach(function (photo) {
         photo.tabIndex = 0;
         photo.setAttribute('role', 'button');
         function open() { big.src = photo.src; big.alt = photo.alt; viewer.showModal(); }
@@ -240,6 +247,20 @@
         photo.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
       });
       viewer.addEventListener('click', function () { viewer.close(); });
+      // Gallery: one main photo; the thumbnails and arrows choose which.
+      document.querySelectorAll('[data-gallery]').forEach(function (gallery) {
+        var main = gallery.querySelector('.gallery-main'), thumbs = [].slice.call(gallery.querySelectorAll('.gallery-thumbs button')), current = 0;
+        function show(i) {
+          current = (i + thumbs.length) % thumbs.length;
+          var img = thumbs[current].querySelector('img');
+          main.src = img.src; main.alt = img.alt;
+          thumbs.forEach(function (t, n) { t.classList.toggle('is-active', n === current); });
+          thumbs[current].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        }
+        thumbs.forEach(function (t, n) { t.addEventListener('click', function () { show(n); }); });
+        gallery.querySelector('.gallery-prev').addEventListener('click', function () { show(current - 1); });
+        gallery.querySelector('.gallery-next').addEventListener('click', function () { show(current + 1); });
+      });
     })();
   </script>
 </body>
