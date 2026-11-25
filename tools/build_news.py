@@ -138,6 +138,13 @@ def main():
         item['link'] = url(item)
         item['image'] = SITE + item['image']          # the portal shows pictures of the site only, by full address
     (ROOT / 'news.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    # The sitemap lists the home page, the archive and every news page, so Google finds a new item by itself.
+    from datetime import date
+    today = date.today().isoformat()
+    urls = [(f'{SITE}/', today), (f'{SITE}/news/', today)] + [(url(i), i.get('date') or today) for i in items]
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    lines += [f'  <url><loc>{u}</loc><lastmod>{d}</lastmod></url>' for u, d in urls]
+    (ROOT / 'sitemap.xml').write_text('\n'.join(lines + ['</urlset>']) + '\n', encoding='utf-8')
     print(len(items), 'news items built')
 
 
