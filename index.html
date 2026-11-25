@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2026-11-25-academy">
+  <link rel="stylesheet" href="styles.css?v=2026-11-25-news">
 </head>
 <body>
   <header class="site-header">
@@ -39,6 +39,7 @@
         <a href="#register">التسجيل</a>
         <a href="#news">الأخبار</a>
         <a href="#contact">تواصل معنا</a>
+        <a class="btn btn-outline nav-portal" href="https://portal.albaraah.org/" target="_blank" rel="noopener">بوابة المدرسة</a>
         <a class="btn btn-gold nav-cta" href="https://wa.me/963962899395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%AA%D8%B3%D8%AC%D9%8A%D9%84" target="_blank" rel="noopener">سجّل الآن</a>
       </nav>
     </div>
@@ -98,6 +99,11 @@
             <button type="button"><img src="assets/school-4.jpg" alt="طلاب يعرضون دفاترهم أمام لوحة المدرسة" loading="lazy"></button>
             <button type="button"><img src="assets/school-5.jpg" alt="طالبات مكرّمات بملصقات التشجيع في حصة التربية الدينية" loading="lazy"></button>
             <button type="button"><img src="assets/school-6.jpg" alt="طلاب يحصلون على أوسمة التميّز على دفاترهم" loading="lazy"></button>
+            <button type="button"><img src="assets/grade9-course.jpg" alt="حصة لطلاب المرحلة الإعدادية" loading="lazy"></button>
+            <button type="button"><img src="assets/kg-1.jpg" alt="أطفال الروضة يتدرّبون على كتابة حرف الذال على اللوح" loading="lazy"></button>
+            <button type="button"><img src="assets/kg-2.jpg" alt="نشاط فني: تلوين حبّات الذرة مع حرف الذال" loading="lazy"></button>
+            <button type="button"><img src="assets/kg-3.jpg" alt="أطفال الروضة يكتبون أشكال حرف الذال في دفاترهم" loading="lazy"></button>
+            <button type="button"><img src="assets/kg-4.jpg" alt="أطفال الروضة أمام لوح درس العدد تسعة" loading="lazy"></button>
           </div>
         </div>
       </div>
@@ -120,6 +126,16 @@
       <div class="wrap">
         <p class="eyebrow">الأخبار والأنشطة</p>
         <h2>تابع جديدنا</h2>
+        <div class="news-list">
+          <article class="news-item">
+            <img src="assets/news-liberation.jpg" alt="علم سوريا فوق خريطتها ومعالمها: قلعة حلب وساعة حمص ونواعير حماة وأقواس تدمر" width="800" height="1200" loading="lazy">
+            <div class="news-body">
+              <p class="news-date">قريباً · الثلاثاء 1 كانون الأول 2026</p>
+              <h3>ترقّبوا الحفلَ الكبير بعيد التحرير</h3>
+              <p>تستعدّ أكاديمية البراءة التعليمية لاحتفالها الكبير بعيد التحرير، يشارك فيه طلابُنا بكلماتٍ وأناشيدَ وفقراتٍ وطنية، ويحضره أولياءُ الأمور ليشاركوا أبناءهم الفرحة. تابعونا لمعرفة التفاصيل.</p>
+            </div>
+          </article>
+        </div>
         <p class="lead">ننشر أخبار الأكاديمية وأنشطة الطلاب أولاً بأول على صفحاتنا.</p>
         <div class="social">
           <a class="social-link fb" href="https://www.facebook.com/Schoolalbaraah" target="_blank" rel="noopener">
@@ -162,7 +178,7 @@
   <footer class="site-footer">
     <div class="wrap footer-row">
       <p>© 2026 أكاديمية البراءة التعليمية</p>
-      <p>سوريا، حلب، مدينة الباب</p>
+      <p>سوريا، حلب، مدينة الباب · <a href="https://portal.albaraah.org/" target="_blank" rel="noopener">بوابة المدرسة</a></p>
     </div>
   </footer>
   <dialog class="viewer" id="viewer" aria-label="عرض الصورة">
@@ -173,7 +189,7 @@
     // Photos open full size; a click anywhere or Esc closes them.
     (function () {
       var viewer = document.getElementById('viewer'), big = viewer.querySelector('img');
-      document.querySelectorAll('.card-photo, .gallery-main').forEach(function (photo) {
+      document.querySelectorAll('.card-photo, .gallery-main, .news-item img').forEach(function (photo) {
         photo.tabIndex = 0;
         photo.setAttribute('role', 'button');
         function open() { big.src = photo.src; big.alt = photo.alt; viewer.showModal(); }
